@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#08060b">
+  <meta name="theme-color" content="#10070b">
   <meta name="description" content="No Dead Ends: você morreu, e agora precisa vencer os jogos do Bar dos Condenados para comprar a própria liberdade.">
   <link rel="canonical" href="https://innominatumdigital.com/nodeadends">
   <title>No Dead Ends — Innominatum Digital</title>
-  <link rel="icon" type="image/png" href="../assets/Rose Black adjusted.png">
+  <link rel="icon" type="image/png" href="../assets/logo_black.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
-      --void: #08060b;
-      --panel: #100b17;
-      --pink: #ff6ca5;
-      --violet: #c77dff;
+      --void: #10070b;
+      --panel: #1b0a10;
+      --pink: #ff647c;
+      --violet: #ff405f;
       --white: #f3e8ff;
       --muted: #b7a9c1;
-      --line: rgba(199, 125, 255, .22);
+      --line: rgba(255, 91, 117, .26);
       --mono: "Share Tech Mono", "Courier New", monospace;
       --display: "Alegreya", Georgia, serif;
       --body: "Rajdhani", "Arial", sans-serif;
@@ -32,9 +32,15 @@
     a { color: inherit; }
     a:focus-visible, button:focus-visible { outline: 2px solid var(--pink); outline-offset: 4px; }
     .wrap { width: min(1050px, calc(100% - 44px)); margin-inline: auto; }
-    .header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid var(--line); background: rgba(8,6,11,.9); backdrop-filter: blur(14px); }
+    .header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid var(--line); background: rgba(16,7,11,.92); backdrop-filter: blur(14px); }
+    .topbar { border-bottom: 1px solid rgba(255,91,117,.14); background: rgba(31,9,16,.72); }
+    .topbar-inner { display: flex; min-height: 42px; align-items: center; justify-content: flex-end; gap: 10px; }
+    .social-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .social-links a { display: inline-flex; min-height: 30px; align-items: center; padding: 0 9px; border: 1px solid rgba(255,91,117,.24); color: #ead9df; font: 11px var(--mono); text-decoration: none; transition: border-color .2s ease, color .2s ease, background .2s ease; }
+    .social-links a:hover { border-color: var(--pink); background: rgba(255,64,95,.12); color: #fff; }
+    .social-links .contact-email { border-color: rgba(255,100,124,.48); color: #ff9aa9; }
     .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 20px; }
-    .logo img { display: block; width: 164px; height: 54px; object-fit: contain; }
+    .logo img { display: block; width: 48px; height: 48px; object-fit: contain; }
     .nav-actions { display: flex; align-items: center; gap: 24px; }
     .nav a, .lang button { color: #e5d8ed; font: 13px var(--mono); text-decoration: none; }
     .nav a:hover, .lang button:hover { color: var(--pink); }
@@ -49,58 +55,96 @@
       place-items: center;
       isolation: isolate;
       border-bottom: 1px solid var(--line);
-      background-color: #100914;
-      background-image: linear-gradient(90deg,rgba(8,6,11,.88),rgba(8,6,11,.5),rgba(8,6,11,.78)), linear-gradient(180deg,rgba(8,6,11,.2),rgba(8,6,11,.55)), url("../arts-nde/1280x720.jpg");
+      background-color: #18080d;
+      background-image: radial-gradient(ellipse at 50% 40%, rgba(116,12,35,.18), transparent 58%), linear-gradient(90deg,rgba(12,5,8,.88),rgba(12,5,8,.5),rgba(12,5,8,.78)), linear-gradient(180deg,rgba(12,5,8,.2),rgba(12,5,8,.65)), url("../arts-nde/1280x720.jpg");
       background-position: center, center, center 38%;
       background-size: cover;
       text-align: center;
     }
-    .hero::before { position: absolute; z-index: -1; right: -25%; bottom: -62%; left: -25%; height: 85%; transform: perspective(350px) rotateX(58deg); transform-origin: center top; background-image: linear-gradient(rgba(199,125,255,.26) 1px, transparent 1px), linear-gradient(90deg,rgba(199,125,255,.26) 1px,transparent 1px); background-size: 55px 40px; content: ""; mask-image: linear-gradient(to bottom,transparent,#000 20%,#000 82%,transparent); }
-    .hero-inner { width: min(790px, calc(100% - 40px)); padding: 90px 0 135px; }
+    .hero::before { position: absolute; z-index: -1; right: -25%; bottom: -62%; left: -25%; height: 85%; transform: perspective(350px) rotateX(58deg); transform-origin: center top; background-image: linear-gradient(rgba(255,70,100,.27) 1px, transparent 1px), linear-gradient(90deg,rgba(255,70,100,.27) 1px,transparent 1px); background-size: 55px 40px; content: ""; mask-image: linear-gradient(to bottom,transparent,#000 20%,#000 82%,transparent); animation: grid-drift 16s linear infinite; }
+    @keyframes grid-drift { to { background-position: 0 40px, 0 0; } }
+    @keyframes title-glow { 0%, 100% { filter: drop-shadow(0 0 12px rgba(255,64,95,.2)); } 50% { filter: drop-shadow(0 0 24px rgba(255,64,95,.48)); } }
+    .hero-inner { width: min(790px, calc(100% - 40px)); padding: 76px 0 125px; }
+    .hero-brand { width: min(340px, 76vw); max-height: 110px; margin: 0 auto 22px; object-fit: contain; animation: title-glow 4s ease-in-out infinite; }
     .eyebrow { color: var(--pink); font: 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-    h1 { margin: 22px 0 17px; font: 800 clamp(42px,8vw,82px)/1.04 var(--display); letter-spacing: -.025em; text-shadow: 0 0 30px rgba(255,108,165,.32); }
+    h1 { margin: 22px 0 17px; font: 800 clamp(42px,8vw,82px)/1.04 var(--display); letter-spacing: -.025em; text-shadow: 0 0 30px rgba(255,64,95,.36); }
     .subtitle { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(19px,2.4vw,23px); }
-    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 10px; margin-top: 30px; padding: 0 23px; border: 1px solid #c33b79; background: #822346; box-shadow: 0 0 28px rgba(255,108,165,.2); font: 14px var(--mono); text-decoration: none; text-transform: uppercase; transition: .2s ease; }
-    .button:hover { transform: translateY(-2px); background: #a52e60; box-shadow: 0 0 32px rgba(255,108,165,.4); }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 10px; margin-top: 30px; padding: 0 23px; border: 1px solid #d34460; background: #8d1d39; box-shadow: 0 0 28px rgba(255,64,95,.22); font: 14px var(--mono); text-decoration: none; text-transform: uppercase; transition: .2s ease; }
+    .button:hover { transform: translateY(-2px); background: #b32648; box-shadow: 0 0 32px rgba(255,64,95,.46); }
     .section { padding: 76px 0; }
     .section h2 { margin: 15px 0 18px; font: 700 clamp(29px,4.5vw,43px)/1.15 var(--display); letter-spacing: -.02em; }
     .section p { max-width: 800px; color: var(--muted); font-size: 20px; }
-    .story { border-bottom: 1px solid rgba(199,125,255,.12); }
+    .story { border-bottom: 1px solid rgba(255,91,117,.14); }
     .details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 34px; }
-    .detail { padding: 22px; border: 1px solid var(--line); background: linear-gradient(145deg,rgba(25,16,34,.9),rgba(13,9,18,.96)); }
+    .detail { padding: 22px; border: 1px solid var(--line); background: linear-gradient(145deg,rgba(38,13,22,.9),rgba(18,8,12,.96)); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .detail:hover { transform: translateY(-4px); border-color: rgba(255,100,124,.62); box-shadow: 0 12px 35px rgba(0,0,0,.24), 0 0 24px rgba(255,64,95,.08); }
     .detail-index { color: var(--pink); font: 12px var(--mono); letter-spacing: .08em; }
     .detail h3 { margin: 10px 0 6px; font: 600 19px var(--display); }
     .detail p { margin: 0; font-size: 17px; }
     .games-list { color: var(--white); }
-    .availability { border-top: 1px solid var(--line); background: radial-gradient(ellipse at 50% 100%,rgba(83,30,123,.2),transparent 65%); text-align: center; }
+    .availability { border-top: 1px solid var(--line); background: radial-gradient(ellipse at 50% 100%,rgba(128,18,44,.23),transparent 65%); text-align: center; }
     .availability p { margin-inline: auto; }
     .availability .eyebrow { display: block; }
-    .footer { padding: 24px 0; border-top: 1px solid rgba(199,125,255,.12); }
+    .trailer { background: linear-gradient(180deg,rgba(75,12,27,.12),transparent); }
+    .trailer .eyebrow, .gallery .eyebrow { display: block; }
+    .trailer .eyebrow::before, .gallery .eyebrow::before { display: none; }
+    .video-frame { position: relative; overflow: hidden; margin-top: 30px; border: 1px solid rgba(255,100,124,.46); background: #080406; box-shadow: 0 22px 65px rgba(0,0,0,.4), 0 0 42px rgba(255,64,95,.12); }
+    .video-frame::before { display: block; padding-top: 56.25%; content: ""; }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .gallery { border-top: 1px solid rgba(255,91,117,.14); }
+    .screenshots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
+    .screenshot { position: relative; overflow: hidden; margin: 0; border: 1px solid rgba(255,91,117,.28); background: #190a10; box-shadow: 0 12px 32px rgba(0,0,0,.2); }
+    .screenshot a { display: block; overflow: hidden; }
+    .screenshot img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .4s ease, filter .4s ease; }
+    .screenshot a:hover img, .screenshot a:focus-visible img { transform: scale(1.055); filter: saturate(1.15); }
+    .screenshot figcaption { padding: 9px 12px; color: #ddcbd1; font: 11px var(--mono); }
+    .footer { padding: 24px 0; border-top: 1px solid rgba(255,91,117,.14); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .footer p { margin: 0; color: #9888a3; font: 12px var(--mono); }
     @media (max-width: 600px) {
       .wrap { width: min(100% - 34px, 480px); }
+      .topbar-inner { justify-content: center; padding-block: 7px; }
+      .social-links { justify-content: center; gap: 5px; }
+      .social-links a { min-height: 28px; padding-inline: 8px; font-size: 10px; }
       .nav { min-height: 66px; gap: 10px; }
-      .logo img { width: 120px; height: 44px; }
+      .logo img { width: 42px; height: 42px; }
       .nav-actions { gap: 12px; }
       .nav a, .lang button { font-size: 11px; }
       .hero { min-height: 540px; }
       .hero-inner { padding: 78px 0 118px; }
       .section { padding: 60px 0; }
       .details-grid { grid-template-columns: 1fr; gap: 12px; }
+      .screenshots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .screenshot figcaption { padding: 8px; font-size: 10px; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
     }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    @media (max-width: 380px) {
+      .nav-actions { gap: 8px; }
+      .nav a, .lang button { font-size: 10px; }
+      .screenshots { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
   <header class="header">
+    <div class="topbar">
+      <nav class="topbar-inner wrap social-links" aria-label="Contato e redes sociais da Innominatum Digital">
+        <a class="contact-email" href="mailto:contact@innominatumdigital.com" aria-label="Enviar e-mail para contact@innominatumdigital.com"><span data-i18n="contact-label">E-mail:</span> contact@innominatumdigital.com</a>
+        <a href="https://www.instagram.com/innominatum.digital" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Innominatum Digital">Instagram</a>
+        <a href="https://innominatumdigital.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Innominatum Digital no itch.io">Itch.io</a>
+        <a href="https://www.facebook.com/InnominatumD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Innominatum Digital">Facebook</a>
+        <a href="https://www.tiktok.com/@innominatumdigital" target="_blank" rel="noopener noreferrer" aria-label="TikTok da Innominatum Digital">TikTok</a>
+        <a href="https://x.com/InnominatumD" target="_blank" rel="noopener noreferrer" aria-label="Innominatum Digital no X">X</a>
+        <a href="https://www.linkedin.com/company/innominatum-digital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Innominatum Digital">LinkedIn</a>
+      </nav>
+    </div>
     <nav class="nav wrap" aria-label="Navegação principal" data-i18n-aria="nav-label">
       <a class="logo" href="../index.htm" aria-label="Innominatum Digital — início" data-i18n-aria="home-label">
-        <img src="../assets/Title Logo (White).png" alt="Innominatum Digital">
+        <img src="../assets/logo_white.png" alt="">
       </a>
       <div class="nav-actions">
-        <a href="../index.htm#jogos" data-i18n="back-link">Todos os jogos ↗</a>
+        <a href="../index.htm" data-i18n="back-link">Todos os jogos ↗</a>
         <div class="lang" role="group" aria-label="Idioma / Language">
           <button type="button" lang="pt-BR" data-language="pt" aria-pressed="true">PT</button>
           <button type="button" lang="en" data-language="en" aria-pressed="false">EN</button>
@@ -112,10 +156,30 @@
     <section class="hero" aria-labelledby="game-title">
       <div class="hero-inner">
         <span class="eyebrow" data-i18n="hero-label">Jogo original da Innominatum Digital</span>
+        <img class="hero-brand" src="../assets/title_white.png" alt="Innominatum Digital">
         <h1 id="game-title">No Dead Ends</h1>
         <p class="subtitle" data-i18n="hero-copy">Você morreu. Parabéns. Agora, sua alma pertence ao Barman — a menos que consiga pagar um milhão de dólares para sair do Bar dos Condenados.</p>
         <a class="button" href="https://store.steampowered.com/app/2808870/No_Dead_Ends/" target="_blank" rel="noopener noreferrer">
           <span data-i18n="steam-cta">Visitar na Steam</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+    <section class="section trailer" aria-labelledby="trailer-title">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="trailer-label">Assista ao trailer</span>
+        <h2 id="trailer-title" data-i18n="trailer-title">Uma última chance de liberdade.</h2>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/8pes1vb0o6E"
+            title="Trailer de No Dead Ends"
+            data-i18n-title="trailer-iframe-title"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <a class="button" href="https://www.youtube.com/watch?v=8pes1vb0o6E" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="watch-youtube">Assistir no YouTube</span><span aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
@@ -156,6 +220,24 @@
         </div>
       </div>
     </section>
+    <section class="section gallery" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="gallery-label">Um olhar pelo bar</span>
+        <h2 id="gallery-title" data-i18n="gallery-title">Conheça o No Dead Ends.</h2>
+        <div class="screenshots">
+          <figure class="screenshot"><a href="nde-screenshot-1.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-1.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 01</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-2.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-2.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 02</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-3.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-3.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 03</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-4.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-4.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 04</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-5.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-5.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 05</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-6.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-6.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 06</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-7.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-7.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 07</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-8.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-8.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 08</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-9.jpg" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-9.jpg" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 09</figcaption></a></figure>
+          <figure class="screenshot"><a href="nde-screenshot-10.png" target="_blank" rel="noopener noreferrer"><img src="nde-screenshot-10.png" alt="Captura de tela de No Dead Ends" data-i18n-alt="screenshot-alt" loading="lazy"><figcaption>No Dead Ends // 10</figcaption></a></figure>
+        </div>
+      </div>
+    </section>
     <section class="section availability">
       <div class="wrap">
         <span class="eyebrow" data-i18n="availability-label">O seu próximo turno começa aqui</span>
@@ -181,7 +263,12 @@
         "nav-label": "Navegação principal", "home-label": "Innominatum Digital — início", "back-link": "Todos os jogos ↗",
         "hero-label": "Jogo original da Innominatum Digital",
         "hero-copy": "Você morreu. Parabéns. Agora, sua alma pertence ao Barman — a menos que consiga pagar um milhão de dólares para sair do Bar dos Condenados.",
-        "steam-cta": "Visitar na Steam", "story-label": "A história // Depois da vida",
+        "steam-cta": "Visitar na Steam", "contact-label": "E-mail:",
+        "trailer-label": "Assista ao trailer",
+        "trailer-title": "Uma última chance de liberdade.", "trailer-iframe-title": "Trailer de No Dead Ends",
+        "watch-youtube": "Assistir no YouTube", "gallery-label": "Um olhar pelo bar",
+        "gallery-title": "Conheça o No Dead Ends.", "screenshot-alt": "Captura de tela de No Dead Ends",
+        "story-label": "A história // Depois da vida",
         "story-title": "Um acordo infernal. Uma conta impossível.",
         "story-copy": "Você bebeu demais. Talvez estivesse comemorando; talvez tentasse afogar as mágoas. Já não importa: a árvore que surgiu na frente do seu carro não quis saber dos seus motivos. Você acorda no No Dead Ends, o Bar dos Condenados. Por causa de um acordo antigo, o Barman agora é o dono legal da sua alma. A letra miúda do contrato é clara: pague a “pequena” taxa de saída de US$ 1.000.000 e estará livre. O problema? Você não levou um centavo para o túmulo.",
         "story-turn": "Por sorte, os habitantes do bar estão com sede de uísque — e de um novo desafiante.",
@@ -205,7 +292,12 @@
         "nav-label": "Main navigation", "home-label": "Innominatum Digital — home", "back-link": "All games ↗",
         "hero-label": "An original Innominatum Digital game",
         "hero-copy": "You died. Congratulations. Your soul now belongs to the Barman — unless you can pay a million dollars to leave the Bar of the Damned.",
-        "steam-cta": "Visit on Steam", "story-label": "The story // Afterlife",
+        "steam-cta": "Visit on Steam", "contact-label": "Email:",
+        "trailer-label": "Watch the trailer",
+        "trailer-title": "One last chance at freedom.", "trailer-iframe-title": "No Dead Ends trailer",
+        "watch-youtube": "Watch on YouTube", "gallery-label": "A look around the bar",
+        "gallery-title": "Step into No Dead Ends.", "screenshot-alt": "No Dead Ends screenshot",
+        "story-label": "The story // Afterlife",
         "story-title": "A hellish deal. An impossible bill.",
         "story-copy": "You drank too much. Maybe it was a celebration, or perhaps you were trying to drown your sorrows. It doesn't matter now: the tree that jumped in front of your car wasn't interested in your reasons. You wake up at No Dead Ends, the Bar of the Damned. Because of a deal you made years ago, the Barman is now the legal owner of your soul. The fine print is clear: pay the “small” release fee of $1,000,000 and you're free. The problem? You didn't take a single cent to the grave.",
         "story-turn": "Luckily, the bar's inhabitants are thirsty for whiskey — and for a new challenger.",
@@ -236,6 +328,12 @@
       });
       document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
         element.setAttribute("aria-label", selected[element.dataset.i18nAria]);
+      });
+      document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+        element.setAttribute("title", selected[element.dataset.i18nTitle]);
+      });
+      document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+        element.setAttribute("alt", selected[element.dataset.i18nAlt]);
       });
       document.querySelectorAll("[data-language]").forEach((button) => {
         button.setAttribute("aria-pressed", String(button.dataset.language === language));

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#08060b">
   <meta name="description" content="Conheça os jogos da Innominatum Digital: No Dead Ends, em produção; lançamentos na Steam e projetos independentes de Game Jam.">
   <title>Innominatum Digital — Jogos</title>
-  <link rel="icon" type="image/png" href="assets/Rose Black adjusted.png">
+  <link rel="icon" type="image/png" href="assets/logo_white.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -56,13 +56,15 @@
       z-index: 30;
       top: 0;
       border-bottom: 1px solid var(--line);
-      background: rgba(8, 6, 11, .88);
+      background: rgba(8, 6, 11, .92);
       backdrop-filter: blur(16px);
     }
+    .nav-content { display: flex; min-width: 0; flex: 1; align-items: center; justify-content: flex-end; gap: clamp(14px, 2vw, 26px); }
     .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; text-decoration: none; }
-    .brand img { width: 150px; height: 50px; object-fit: contain; }
-    .nav-links { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); }
+    .brand img { width: 48px; height: 48px; object-fit: contain; transition: filter .2s ease, transform .2s ease; }
+    .brand:hover img { filter: drop-shadow(0 0 10px rgba(199, 125, 255, .65)); transform: rotate(-5deg); }
+    .nav-links { display: flex; align-items: center; gap: clamp(12px, 2vw, 24px); }
     .nav-links a {
       color: #decfe8;
       font: 13px var(--mono);
@@ -72,6 +74,19 @@
       transition: color .2s ease;
     }
     .nav-links a:hover { color: var(--violet); }
+    .topbar-socials { display: flex; align-items: center; gap: 5px; }
+    .topbar-socials a {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      color: #ad9bb9;
+      transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .topbar-socials a:hover { transform: translateY(-2px); border-color: rgba(199, 125, 255, .32); background: rgba(123, 44, 191, .14); color: var(--violet); }
+    .topbar-socials svg { width: 17px; height: 17px; fill: currentColor; }
     .language-switch { display: flex; align-items: center; gap: 5px; }
     .language-switch button {
       padding: 6px 7px;
@@ -92,6 +107,7 @@
       isolation: isolate;
       border-bottom: 1px solid var(--line);
       background:
+        radial-gradient(ellipse at 50% 45%, rgba(84, 32, 132, .14), transparent 58%),
         radial-gradient(ellipse at 74% 44%, rgba(80, 29, 130, .2), transparent 49%),
         radial-gradient(ellipse at 50% 100%, rgba(38, 13, 61, .38), transparent 62%);
     }
@@ -138,7 +154,7 @@
       overflow: hidden;
       border: 1px solid rgba(255, 108, 165, .62);
       background: #160c1b;
-      box-shadow: 0 0 0 1px rgba(138, 43, 226, .22), 0 26px 90px rgba(0, 0, 0, .46), 0 0 54px rgba(138, 43, 226, .24);
+      box-shadow: 0 0 0 1px rgba(138, 43, 226, .22), 0 26px 90px rgba(0, 0, 0, .46), 0 0 54px rgba(138, 43, 226, .3);
       animation: poster-arrive .9s cubic-bezier(.2,.8,.2,1) both;
     }
     @keyframes poster-arrive { from { opacity: 0; transform: translateX(-22px) scale(.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
@@ -177,6 +193,7 @@
     }
     .eyebrow::before { width: 25px; height: 1px; background: currentColor; content: ""; }
     .hero-copy .eyebrow { color: #ff9abc; }
+    .hero-brand { display: block; width: min(230px, 62%); max-height: 76px; margin: 0 0 15px; object-fit: contain; object-position: left center; filter: drop-shadow(0 0 18px rgba(157, 78, 221, .28)); }
     .hero h1 {
       margin: 17px 0 12px;
       font: 800 clamp(52px, 7vw, 88px)/.93 var(--display);
@@ -224,8 +241,9 @@
     .game-card {
       min-width: 0;
       overflow: hidden;
-      border: 1px solid rgba(199, 125, 255, .19);
+      border: 1px solid rgba(199, 125, 255, .24);
       background: linear-gradient(145deg, rgba(25, 16, 34, .94), rgba(13, 9, 18, .98));
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .12);
       transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
     .game-card:hover, .game-card:focus-within {
@@ -287,16 +305,19 @@
     .game-jam-grid .game-footer { justify-content: flex-start; }
 
     .site-footer { padding: 25px 0; border-top: 1px solid rgba(199, 125, 255, .14); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; }
     .footer-inner p { margin: 0; color: #9889a1; font: 12px var(--mono); }
-    .social-links { display: flex; flex-wrap: wrap; gap: 19px; }
-    .social-links a { color: #c3b4cf; font: 12px var(--mono); text-decoration: none; transition: color .2s ease; }
-    .social-links a:hover { color: var(--violet); }
-
+    .footer-contact { display: inline-flex; align-items: center; gap: 8px; color: #c3b4cf; font: 11px var(--mono); text-decoration: none; transition: color .2s ease; }
+    .footer-contact:hover { color: var(--violet); }
     .motion-ready [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
     .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
     .motion-ready .game-card:nth-child(3n + 2) { transition-delay: .08s; }
     .motion-ready .game-card:nth-child(3n) { transition-delay: .16s; }
+    @media (max-width: 1100px) {
+      .nav { min-height: 0; flex-wrap: wrap; gap: 0 18px; padding-block: 10px; }
+      .nav-content { flex-wrap: wrap; justify-content: flex-end; gap: 10px 16px; }
+      .topbar-socials { flex-basis: 100%; justify-content: flex-end; }
+    }
     @media (max-width: 900px) {
       .hero-content { grid-template-columns: minmax(0, 1.05fr) minmax(270px, .95fr); gap: 34px; }
       .hero h1 { font-size: clamp(48px, 7vw, 72px); }
@@ -305,15 +326,20 @@
     @media (max-width: 680px) {
       .wrap { width: min(100% - 36px, 560px); }
       .nav { min-height: 68px; gap: 10px; }
-      .brand img { width: 116px; height: 42px; }
+      .brand img { width: 42px; height: 42px; }
+      .nav-content { gap: 8px; }
       .nav-links { gap: 11px; }
       .nav-links a { font-size: 10px; }
+      .topbar-socials { justify-content: center; gap: 4px; }
+      .topbar-socials a { width: 30px; height: 30px; }
+      .topbar-socials svg { width: 16px; height: 16px; }
       .language-switch { gap: 0; }
       .language-switch button { padding: 5px 4px; font-size: 10px; }
       .hero { min-height: unset; }
       .hero-content { grid-template-columns: 1fr; gap: 27px; padding-block: 34px 62px; }
       .hero-poster { order: 0; }
       .hero-copy { order: 1; max-width: none; }
+      .hero-brand { width: min(210px, 65%); max-height: 68px; margin-bottom: 11px; }
       .hero h1 { margin-top: 11px; font-size: clamp(48px, 12vw, 68px); }
       .hero-description { font-size: 19px; }
       .production-badge { top: 11px; left: 11px; padding: 7px 9px; font-size: 10px; }
@@ -331,10 +357,11 @@
     @media (max-width: 390px) {
       .wrap { width: calc(100% - 28px); }
       .nav { gap: 7px; }
-      .brand img { width: 84px; height: 36px; }
+      .brand img { width: 38px; height: 38px; }
       .nav-links { flex-wrap: nowrap; gap: 6px; }
       .nav-links a { font-size: 8px; letter-spacing: 0; white-space: nowrap; }
       .language-switch button { padding: 4px 2px; font-size: 9px; }
+      .topbar-socials { gap: 3px; }
       .game-jam-grid { grid-template-columns: 1fr; }
       .game-jam-grid .game-card-art img { aspect-ratio: 16 / 8.5; }
     }
@@ -348,15 +375,26 @@
   <header class="site-header">
     <nav class="nav wrap" aria-label="Navegação dos jogos" data-i18n-aria="nav-label">
       <a class="brand" href="#destaque" aria-label="Innominatum Digital — jogos" data-i18n-aria="brand-label">
-        <img src="assets/Title Logo (White).png" alt="Innominatum Digital" data-i18n-alt="brand-alt">
+        <img src="assets/logo_white.png" alt="">
       </a>
-      <div class="nav-links">
-        <a href="#destaque" data-i18n="nav-featured">Em produção</a>
-        <a href="#steam" data-i18n="nav-steam">Lançados</a>
-        <a href="#game-jams" data-i18n="nav-jams">Game Jams</a>
-        <div class="language-switch" role="group" aria-label="Idioma / Language">
-          <button type="button" lang="pt-BR" data-language="pt" aria-pressed="true">PT</button>
-          <button type="button" lang="en" data-language="en" aria-pressed="false">EN</button>
+      <div class="nav-content">
+        <div class="nav-links">
+          <a href="#destaque" data-i18n="nav-featured">Em produção</a>
+          <a href="#steam" data-i18n="nav-steam">Lançados</a>
+          <a href="#game-jams" data-i18n="nav-jams">Game Jams</a>
+          <div class="language-switch" role="group" aria-label="Idioma / Language">
+            <button type="button" lang="pt-BR" data-language="pt" aria-pressed="true">PT</button>
+            <button type="button" lang="en" data-language="en" aria-pressed="false">EN</button>
+          </div>
+        </div>
+        <div class="topbar-socials" role="group" aria-label="Redes sociais da Innominatum Digital" data-i18n-aria="social-label">
+          <a href="https://www.instagram.com/innominatum.digital" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg></a>
+          <a href="https://innominatumdigital.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13ZM6 7v2h2V7H6Zm4 0v2h2V7h-2Zm4 0v2h2V7h-2Zm-8 5v2h2v-2H6Zm4 0v2h2v-2h-2Zm4 0v2h2v-2h-2Zm-8 5v2h2v-2H6Zm4 0v2h2v-2h-2Zm4 0v2h2v-2h-2Z"/></svg></a>
+          <a href="https://www.facebook.com/InnominatumD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2v-2c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5v2.1H7v3.2h2.9V21h3.6Z"/></svg></a>
+          <a href="https://www.tiktok.com/@innominatumdigital" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.2a5.6 5.6 0 0 1-3.5-4.1V1h-4.2v14.8a2.7 2.7 0 1 1-2.7-2.7c.4 0 .8.1 1.1.2V9a7 7 0 1 0 5.8 6.9V8.4a9.7 9.7 0 0 0 5.1 1.5V5.8c-.6 0-1.1-.1-1.6-.3Z"/></svg></a>
+          <a href="https://x.com/InnominatumD" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.9 5.8 22H2.6l7.3-8.4L1.8 2h6.4l4.5 6.7L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z"/></svg></a>
+          <a href="https://www.linkedin.com/company/innominatum-digital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9h3.8v12H3.3V9Zm6.2 0h3.6v1.6h.1A4 4 0 0 1 16.8 8c3.9 0 4.6 2.5 4.6 5.8V21h-3.8v-6.4c0-1.5 0-3.5-2.1-3.5s-2.4 1.6-2.4 3.4V21H9.5V9Z"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCv0PYpOaHvRy5aVHm0AYsAA" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg></a>
         </div>
       </div>
     </nav>
@@ -371,6 +409,7 @@
         <div class="hero-copy" data-reveal>
           <span class="production-badge" data-i18n="production-badge">Novo jogo em produção</span>
           <p class="eyebrow" data-i18n="hero-eyebrow">Próximo lançamento // Terror psicológico</p>
+          <img class="hero-brand" src="assets/title_white.png" alt="Innominatum Digital">
           <h1 id="hero-title">No Dead Ends</h1>
           <p class="hero-description" data-i18n="hero-description">Você morreu. Agora, sua alma pertence ao Barman. Desafie os fantasmas do Bar dos Condenados, vença seus jogos e conquiste sua liberdade.</p>
           <p class="hero-meta" data-i18n="hero-meta">NO ALÉM // APOSTE SUA ETERNIDADE</p>
@@ -549,11 +588,9 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <p>© 2026 INNOMINATUM DIGITAL <span data-i18n="footer-note">// JOGOS PRÓPRIOS</span></p>
-      <nav class="social-links" aria-label="Redes sociais" data-i18n-aria="social-label">
-        <a href="https://innominatumdigital.itch.io/" target="_blank" rel="noopener noreferrer">ITCH.IO ↗</a>
-        <a href="https://www.instagram.com/innominatum.digital/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a>
-        <a href="https://www.youtube.com/channel/UCv0PYpOaHvRy5aVHm0AYsAA" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a>
-      </nav>
+      <a class="footer-contact" href="mailto:contact@innominatumdigital.com" aria-label="Enviar e-mail para contact@innominatumdigital.com" data-i18n-aria="contact-email-label">
+        <span data-i18n="contact-label">CONTATO //</span> contact@innominatumdigital.com
+      </a>
     </div>
   </footer>
   <script>
@@ -561,7 +598,9 @@
       pt: {
         title: "Innominatum Digital — Jogos",
         description: "Conheça os jogos da Innominatum Digital: No Dead Ends, em produção; lançamentos na Steam e projetos independentes de Game Jam.",
-        "nav-label": "Navegação dos jogos", "brand-label": "Innominatum Digital — jogos", "brand-alt": "Innominatum Digital",
+        "nav-label": "Navegação dos jogos", "brand-label": "Innominatum Digital — jogos",
+        "contact-label": "CONTATO //", "contact-email-label": "Enviar e-mail para contact@innominatumdigital.com",
+        "social-label": "Redes sociais da Innominatum Digital",
         "nde-cover-alt": "Arte de capa de No Dead Ends: uma personagem e o Barman no balcão de um bar sobrenatural.",
         "dash-link-label": "Dash & Swing na Steam", "soul-link-label": "Soul Shifter na Steam",
         "lostfound-link-label": "Lost&Found CO. no itch.io", "rubby-link-label": "Rubby's Journey no itch.io",
@@ -609,12 +648,14 @@
         "warrior-description": "Alterne entre as almas da Luz e da Sombra para derrotar os inimigos de uma masmorra.",
         "ball-type": "Plataformer de precisão",
         "ball-description": "Um antigo e desafiador projeto de plataforma: domine o impulso da bola e tente chegar ao fim.",
-        "play-itch": "Ver no itch.io", "footer-note": "// JOGOS PRÓPRIOS", "social-label": "Redes sociais"
+        "play-itch": "Ver no itch.io", "footer-note": "// JOGOS PRÓPRIOS"
       },
       en: {
         title: "Innominatum Digital — Games",
         description: "Explore Innominatum Digital games: No Dead Ends in development, Steam releases, and independent game jam projects.",
-        "nav-label": "Game navigation", "brand-label": "Innominatum Digital — games", "brand-alt": "Innominatum Digital",
+        "nav-label": "Game navigation", "brand-label": "Innominatum Digital — games",
+        "contact-label": "CONTACT //", "contact-email-label": "Email contact@innominatumdigital.com",
+        "social-label": "Innominatum Digital social media",
         "nde-cover-alt": "No Dead Ends cover art: a character and the Barman at the counter of a supernatural bar.",
         "dash-link-label": "Dash & Swing on Steam", "soul-link-label": "Soul Shifter on Steam",
         "lostfound-link-label": "Lost&Found CO. on itch.io", "rubby-link-label": "Rubby's Journey on itch.io",
@@ -662,7 +703,7 @@
         "warrior-description": "Switch between the souls of Light and Shadow to defeat the enemies in a dungeon.",
         "ball-type": "Precision platformer",
         "ball-description": "An old and challenging platformer project: master the ball's momentum and try to reach the end.",
-        "play-itch": "View on itch.io", "footer-note": "// ORIGINAL GAMES", "social-label": "Social media"
+        "play-itch": "View on itch.io", "footer-note": "// ORIGINAL GAMES"
       }
     };
 
