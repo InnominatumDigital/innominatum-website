@@ -32,18 +32,17 @@
     a { color: inherit; }
     a:focus-visible, button:focus-visible { outline: 2px solid var(--pink); outline-offset: 4px; }
     .wrap { width: min(1050px, calc(100% - 44px)); margin-inline: auto; }
-    .header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid var(--line); background: rgba(16,7,11,.92); backdrop-filter: blur(14px); }
-    .topbar { border-bottom: 1px solid rgba(255,91,117,.14); background: rgba(31,9,16,.72); }
-    .topbar-inner { display: flex; min-height: 42px; align-items: center; justify-content: flex-end; gap: 10px; }
-    .social-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
-    .social-links a { display: inline-flex; min-height: 30px; align-items: center; padding: 0 9px; border: 1px solid rgba(255,91,117,.24); color: #ead9df; font: 11px var(--mono); text-decoration: none; transition: border-color .2s ease, color .2s ease, background .2s ease; }
-    .social-links a:hover { border-color: var(--pink); background: rgba(255,64,95,.12); color: #fff; }
-    .social-links .contact-email { border-color: rgba(255,100,124,.48); color: #ff9aa9; }
-    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 20px; }
+    .header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid var(--line); background: rgba(16,7,11,.92); backdrop-filter: blur(16px); }
+    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
     .logo img { display: block; width: 48px; height: 48px; object-fit: contain; }
-    .nav-actions { display: flex; align-items: center; gap: 24px; }
+    .nav-content { display: flex; min-width: 0; flex: 1; align-items: center; justify-content: flex-end; gap: clamp(14px, 2vw, 26px); }
+    .nav-actions { display: flex; align-items: center; gap: clamp(12px, 2vw, 24px); }
     .nav a, .lang button { color: #e5d8ed; font: 13px var(--mono); text-decoration: none; }
     .nav a:hover, .lang button:hover { color: var(--pink); }
+    .topbar-socials { display: flex; align-items: center; gap: 5px; }
+    .topbar-socials a { display: grid; width: 32px; height: 32px; place-items: center; border: 1px solid transparent; border-radius: 3px; color: #b7a9ae; transition: border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease; }
+    .topbar-socials a:hover { transform: translateY(-2px); border-color: rgba(255,100,124,.36); background: rgba(255,64,95,.12); color: var(--pink); }
+    .topbar-socials svg { width: 17px; height: 17px; fill: currentColor; }
     .lang { display: flex; gap: 5px; }
     .lang button { padding: 6px; border: 1px solid transparent; background: transparent; cursor: pointer; }
     .lang button[aria-pressed="true"] { border-color: var(--line); color: var(--pink); }
@@ -63,9 +62,7 @@
     }
     .hero::before { position: absolute; z-index: -1; right: -25%; bottom: -62%; left: -25%; height: 85%; transform: perspective(350px) rotateX(58deg); transform-origin: center top; background-image: linear-gradient(rgba(255,70,100,.27) 1px, transparent 1px), linear-gradient(90deg,rgba(255,70,100,.27) 1px,transparent 1px); background-size: 55px 40px; content: ""; mask-image: linear-gradient(to bottom,transparent,#000 20%,#000 82%,transparent); animation: grid-drift 16s linear infinite; }
     @keyframes grid-drift { to { background-position: 0 40px, 0 0; } }
-    @keyframes title-glow { 0%, 100% { filter: drop-shadow(0 0 12px rgba(255,64,95,.2)); } 50% { filter: drop-shadow(0 0 24px rgba(255,64,95,.48)); } }
     .hero-inner { width: min(790px, calc(100% - 40px)); padding: 76px 0 125px; }
-    .hero-brand { width: min(340px, 76vw); max-height: 110px; margin: 0 auto 22px; object-fit: contain; animation: title-glow 4s ease-in-out infinite; }
     .eyebrow { color: var(--pink); font: 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; }
     h1 { margin: 22px 0 17px; font: 800 clamp(42px,8vw,82px)/1.04 var(--display); letter-spacing: -.025em; text-shadow: 0 0 30px rgba(255,64,95,.36); }
     .subtitle { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(19px,2.4vw,23px); }
@@ -101,14 +98,20 @@
     .footer { padding: 24px 0; border-top: 1px solid rgba(255,91,117,.14); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .footer p { margin: 0; color: #9888a3; font: 12px var(--mono); }
+    @media (max-width: 1100px) {
+      .nav { min-height: 0; flex-wrap: wrap; gap: 0 18px; padding-block: 10px; }
+      .nav-content { flex-wrap: wrap; justify-content: flex-end; gap: 10px 16px; }
+      .topbar-socials { flex-basis: 100%; justify-content: flex-end; }
+    }
     @media (max-width: 600px) {
       .wrap { width: min(100% - 34px, 480px); }
-      .topbar-inner { justify-content: center; padding-block: 7px; }
-      .social-links { justify-content: center; gap: 5px; }
-      .social-links a { min-height: 28px; padding-inline: 8px; font-size: 10px; }
       .nav { min-height: 66px; gap: 10px; }
-      .logo img { width: 42px; height: 42px; }
+      .nav-content { gap: 8px; }
       .nav-actions { gap: 12px; }
+      .logo img { width: 42px; height: 42px; }
+      .topbar-socials { justify-content: center; gap: 4px; }
+      .topbar-socials a { width: 30px; height: 30px; }
+      .topbar-socials svg { width: 16px; height: 16px; }
       .nav a, .lang button { font-size: 11px; }
       .hero { min-height: 540px; }
       .hero-inner { padding: 78px 0 118px; }
@@ -128,26 +131,26 @@
 </head>
 <body>
   <header class="header">
-    <div class="topbar">
-      <nav class="topbar-inner wrap social-links" aria-label="Contato e redes sociais da Innominatum Digital">
-        <a class="contact-email" href="mailto:contact@innominatumdigital.com" aria-label="Enviar e-mail para contact@innominatumdigital.com"><span data-i18n="contact-label">E-mail:</span> contact@innominatumdigital.com</a>
-        <a href="https://www.instagram.com/innominatum.digital" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Innominatum Digital">Instagram</a>
-        <a href="https://innominatumdigital.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Innominatum Digital no itch.io">Itch.io</a>
-        <a href="https://www.facebook.com/InnominatumD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Innominatum Digital">Facebook</a>
-        <a href="https://www.tiktok.com/@innominatumdigital" target="_blank" rel="noopener noreferrer" aria-label="TikTok da Innominatum Digital">TikTok</a>
-        <a href="https://x.com/InnominatumD" target="_blank" rel="noopener noreferrer" aria-label="Innominatum Digital no X">X</a>
-        <a href="https://www.linkedin.com/company/innominatum-digital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Innominatum Digital">LinkedIn</a>
-      </nav>
-    </div>
     <nav class="nav wrap" aria-label="Navegação principal" data-i18n-aria="nav-label">
       <a class="logo" href="../index.htm" aria-label="Innominatum Digital — início" data-i18n-aria="home-label">
         <img src="../assets/logo_white.png" alt="">
       </a>
-      <div class="nav-actions">
-        <a href="../index.htm" data-i18n="back-link">Todos os jogos ↗</a>
-        <div class="lang" role="group" aria-label="Idioma / Language">
-          <button type="button" lang="pt-BR" data-language="pt" aria-pressed="true">PT</button>
-          <button type="button" lang="en" data-language="en" aria-pressed="false">EN</button>
+      <div class="nav-content">
+        <div class="nav-actions">
+          <a href="../index.htm" data-i18n="back-link">Todos os jogos ↗</a>
+          <div class="lang" role="group" aria-label="Idioma / Language">
+            <button type="button" lang="pt-BR" data-language="pt" aria-pressed="true">PT</button>
+            <button type="button" lang="en" data-language="en" aria-pressed="false">EN</button>
+          </div>
+        </div>
+        <div class="topbar-socials" role="group" aria-label="Redes sociais da Innominatum Digital" data-i18n-aria="social-label">
+          <a href="https://www.instagram.com/innominatum.digital" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg></a>
+          <a href="https://innominatumdigital.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13ZM6 7v2h2V7H6Zm4 0v2h2V7h-2Zm4 0v2h2V7h-2Zm-8 5v2h2v-2H6Zm4 0v2h2v-2h-2Zm4 0v2h2v-2h-2Zm-8 5v2h2v-2H6Zm4 0v2h2v-2h-2Zm4 0v2h2v-2h-2Z"/></svg></a>
+          <a href="https://www.facebook.com/InnominatumD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2v-2c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5v2.1H7v3.2h2.9V21h3.6Z"/></svg></a>
+          <a href="https://www.tiktok.com/@innominatumdigital" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.2a5.6 5.6 0 0 1-3.5-4.1V1h-4.2v14.8a2.7 2.7 0 1 1-2.7-2.7c.4 0 .8.1 1.1.2V9a7 7 0 1 0 5.8 6.9V8.4a9.7 9.7 0 0 0 5.1 1.5V5.8c-.6 0-1.1-.1-1.6-.3Z"/></svg></a>
+          <a href="https://x.com/InnominatumD" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.9 5.8 22H2.6l7.3-8.4L1.8 2h6.4l4.5 6.7L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z"/></svg></a>
+          <a href="https://www.linkedin.com/company/innominatum-digital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9h3.8v12H3.3V9Zm6.2 0h3.6v1.6h.1A4 4 0 0 1 16.8 8c3.9 0 4.6 2.5 4.6 5.8V21h-3.8v-6.4c0-1.5 0-3.5-2.1-3.5s-2.4 1.6-2.4 3.4V21H9.5V9Z"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCv0PYpOaHvRy5aVHm0AYsAA" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg></a>
         </div>
       </div>
     </nav>
@@ -156,7 +159,6 @@
     <section class="hero" aria-labelledby="game-title">
       <div class="hero-inner">
         <span class="eyebrow" data-i18n="hero-label">Jogo original da Innominatum Digital</span>
-        <img class="hero-brand" src="../assets/title_white.png" alt="Innominatum Digital">
         <h1 id="game-title">No Dead Ends</h1>
         <p class="subtitle" data-i18n="hero-copy">Você morreu. Parabéns. Agora, sua alma pertence ao Barman — a menos que consiga pagar um milhão de dólares para sair do Bar dos Condenados.</p>
         <a class="button" href="https://store.steampowered.com/app/2808870/No_Dead_Ends/" target="_blank" rel="noopener noreferrer">
@@ -261,6 +263,7 @@
         title: "No Dead Ends — Innominatum Digital",
         description: "No Dead Ends: você morreu, e agora precisa vencer os jogos do Bar dos Condenados para comprar a própria liberdade.",
         "nav-label": "Navegação principal", "home-label": "Innominatum Digital — início", "back-link": "Todos os jogos ↗",
+        "social-label": "Redes sociais da Innominatum Digital",
         "hero-label": "Jogo original da Innominatum Digital",
         "hero-copy": "Você morreu. Parabéns. Agora, sua alma pertence ao Barman — a menos que consiga pagar um milhão de dólares para sair do Bar dos Condenados.",
         "steam-cta": "Visitar na Steam", "contact-label": "E-mail:",
@@ -290,6 +293,7 @@
         title: "No Dead Ends — Innominatum Digital",
         description: "No Dead Ends: you're dead, and now you must win the games at the Bar of the Damned to buy your freedom.",
         "nav-label": "Main navigation", "home-label": "Innominatum Digital — home", "back-link": "All games ↗",
+        "social-label": "Innominatum Digital social media",
         "hero-label": "An original Innominatum Digital game",
         "hero-copy": "You died. Congratulations. Your soul now belongs to the Barman — unless you can pay a million dollars to leave the Bar of the Damned.",
         "steam-cta": "Visit on Steam", "contact-label": "Email:",
